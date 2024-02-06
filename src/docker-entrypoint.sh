@@ -23,3 +23,4 @@ touch /var/log/xferlog
 tail -f /var/log/xferlog | tee /dev/stdout &
 
 /usr/sbin/vsftpd
+
