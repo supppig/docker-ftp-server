@@ -57,6 +57,6 @@ jobs:
         uses: peter-evans/dockerhub-description@v4
         with:
           password: ${{ secrets.DOCKERHUB_TOKEN }}
-          repository: ${{ github.repository_owner }}/ftp-server
+          repository: supppig/ftp-server
           short-description: ${{ github.event.repository.description }}
           username: ${{ secrets.DOCKERHUB_USERNAME }}
