@@ -4,7 +4,7 @@ ENV FTP_USER=foo \
 	GID=1000 \
 	UID=1000
 
-RUN apk add --no-cache --update vsftpd 	db4-utils
+RUN apk add --no-cache --update vsftpd db4
  	# db4 \
  	# iproute
 
