@@ -5,7 +5,10 @@ ENV FTP_USER=foo \
 	UID=1000
 
 RUN apk add --no-cache --update \
-	vsftpd==3.0.5-r2
+	vsftpd \
+ 	db4-utils \
+ 	db4 \
+ 	iproute
 
 COPY [ "/src/vsftpd.conf", "/etc" ]
 COPY [ "/src/docker-entrypoint.sh", "/" ]
