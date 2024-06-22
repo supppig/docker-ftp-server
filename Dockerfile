@@ -4,13 +4,12 @@ ENV FTP_USER=foo \
 	GID=1000 \
 	UID=1000
 
-RUN apk add --no-cache --update vsftpd db4
- 	# db4 \
- 	# iproute
+RUN apk add --no-cache --update \
+	vsftpd==3.0.5-r2
 
 COPY [ "/src/vsftpd.conf", "/etc" ]
 COPY [ "/src/docker-entrypoint.sh", "/" ]
 
 ENTRYPOINT [ "/docker-entrypoint.sh" ]
-EXPOSE 8095-8099/tcp
-#HEALTHCHECK CMD netstat -lnt | grep :21 || exit 1
+EXPOSE 20/tcp 21/tcp 8997-8999/tcp
+HEALTHCHECK CMD netstat -lnt | grep :21 || exit 1
