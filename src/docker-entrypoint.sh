@@ -13,6 +13,7 @@ adduser \
 	-u $UID \
 	$FTP_USER
 
+chown nobody /home/$FTP_USER
 echo "$FTP_USER:$FTP_PASS" | /usr/sbin/chpasswd
 
 touch /var/log/vsftpd.log
