@@ -23,10 +23,12 @@ jobs:
             ${{ github.repository_owner }}/ftp-server
             ghcr.io/${{ github.repository_owner }}/ftp-server
           tags: |
-            type=schedule,branch=main
+            type=edge,branch=main
             type=semver,pattern={{version}}
             type=semver,pattern={{major}}.{{minor}}
             type=semver,pattern={{major}}
+          flavor: |
+            latest=auto
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v3
       - name: Set up Docker Buildx
@@ -50,7 +52,7 @@ jobs:
           context: .
           platforms: linux/amd64,linux/arm64
           push: ${{ github.event_name != 'pull_request' }}
-          tags: ${{ steps.prep.outputs.tags }}
+          tags: latest
           labels: ${{ steps.prep.outputs.labels }}
       - name: Update Description
         continue-on-error: true
