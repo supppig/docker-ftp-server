@@ -52,7 +52,7 @@ jobs:
           context: .
           platforms: linux/amd64,linux/arm64
           push: ${{ github.event_name != 'pull_request' }}
-          tags: user/app:latest
+          tags: latest
       - name: Update Description
         continue-on-error: true
         uses: peter-evans/dockerhub-description@v4
