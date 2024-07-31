@@ -1,9 +1,9 @@
 FROM alpine:latest
 
 RUN apk add --no-cache --update \
-	pure-ftpd
+	pure-ftpd perl
 
-# COPY [ "/src/vsftpd.conf", "/etc" ]
+COPY [ "/src/pure-config.pl", "/" ]
 COPY [ "/src/docker-entrypoint.sh", "/" ]
 
 ENTRYPOINT [ "/docker-entrypoint.sh" ]
