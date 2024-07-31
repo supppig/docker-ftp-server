@@ -23,7 +23,7 @@
 # tail -f /var/log/xferlog | tee /dev/stdout &
 
 replaceFile() {
-	if [ -f "/etc/$1" -a ! -z $(ls -F "/etc/$1" | grep '@') ];then
+	if [ -f "/etc/$1" -a -z "$(ls -F "/etc/$1" | grep '@')" ];then
 		rm -f /etc/$1
 		ln -s /pure-ftpd/$1 /etc/$1
 	fi	
