@@ -27,6 +27,8 @@ jobs:
             type=semver,pattern={{version}}
             type=semver,pattern={{major}}.{{minor}}
             type=semver,pattern={{major}}
+          flavor: |
+            latest=auto
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v3
       - name: Set up Docker Buildx
@@ -50,7 +52,7 @@ jobs:
           context: .
           platforms: linux/amd64,linux/arm64
           push: ${{ github.event_name != 'pull_request' }}
-          tags: user/app:latest
+          tags: ${{ steps.prep.outputs.tags }}
           labels: ${{ steps.prep.outputs.labels }}
       - name: Update Description
         continue-on-error: true
