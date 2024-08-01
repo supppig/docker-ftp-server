@@ -14,8 +14,7 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-FROM alpine:3.3
-MAINTAINER gimoh <gimoh@bitmessage.ch>
+FROM alpine:latest
 
 ENV PUREFTPD_VERSION=1.0.42-r0 \
     SYSLOG_STDOUT_VERSION=1.1.1 \
