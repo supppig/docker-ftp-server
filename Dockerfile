@@ -20,15 +20,11 @@ ENV PUREFTPD_VERSION=1.0.42-r0 \
     SYSLOG_STDOUT_VERSION=1.1.1 \
     PURE_CONFDIR=/etc/pureftpd
 
-RUN printf '%s\n' \
-      '@testing http://dl-cdn.alpinelinux.org/alpine/edge/testing' \
-      >> /etc/apk/repositories \
-    && apk update \
+RUN apk update \
     && apk add pure-ftpd@testing="${PUREFTPD_VERSION}" \
     && apk add curl=7.49.1-r0 \
     && install -d -o root -g root -m 755 /usr/local/sbin \
-    && curl -ksL https://github.com/timonier/syslog-stdout/releases/download/v1.1.1/syslog-stdout.tar.gz \
-      |tar -xvzf - -C /usr/local/sbin \
+    && curl -ksL https://github.com/timonier/syslog-stdout/releases/download/v1.1.1/syslog-stdout.tar.gz |tar -xvzf - -C /usr/local/sbin \
     && apk del --purge curl \
     && rm -rf /var/cache/apk/*
 
